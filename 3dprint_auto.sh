@@ -1,6 +1,6 @@
 #!/bin/bash
 
-script_dir=$(echo $var | sed 's/[^/]*$//')
+script_dir=$(echo $0 | sed 's/[^/]*$//')
 
 # Parse command line arguments
 while getopts ":i:o:" opt; do
