@@ -1,5 +1,7 @@
 #!/bin/bash
 
+script_dir=$(echo $var | sed 's/[^/]*$//')
+
 # Parse command line arguments
 while getopts ":i:o:" opt; do
 	case ${opt} in
@@ -29,6 +31,6 @@ mris_convert --combinesurfs $input_dir/rh.pial $input_dir/lh.pial $output_dir/co
 
 # Apply the "Flatten Visible Layers" filter to the combined mesh
 echo "Applying the 'Flatten Visible Layers' filter to the combined mesh..."
-meshlabserver -i "$output_dir"/combined_mesh.stl -s ~/Scripts/meshlabauto/fix.mlx -o "$output_dir"/combined_mesh_processed.stl
+meshlabserver -i "$output_dir"/combined_mesh.stl -s ${script_dir}fix.mlx -o "$output_dir"/combined_mesh_processed.stl
 
 echo "Processing complete!"
